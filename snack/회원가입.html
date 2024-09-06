@@ -7,15 +7,16 @@
     <title>회원가입 폼</title>
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
     <link rel="stylesheet" href="회원가입.css">
-    <script src="MemberForm.js"></script>
+    <script src="회원가입.js"></script> <!-- JS 파일 분리 -->
 </head>
 
 <body>
-    <form onsubmit="return validateForm()">
+    <form onsubmit="return submitForm()">
         <h2>회원가입</h2>
 
         <label for="name">이름</label>
-        <input type="text" id="name" name="name" placeholder="이름 입력" required>
+        <input type="text" id="name" name="name" placeholder="이름 입력" required oninput="validateName()">
+        <div id="nameMessage" class="message"></div> <!-- 이름 경고 문구 출력할 div 추가 -->
 
         <label for="email">이메일 (ID)</label>
         <div class="input-group">
@@ -31,15 +32,16 @@
                 <button type="button" onclick="verifyEmailCode()">확인</button>
             </div>
             <div id="emailCodeMessage" class="message"></div>
+            <div id="timer" class="message"></div> <!-- 타이머를 출력할 div 추가 -->
         </div>
 
         <label for="password">비밀번호</label>
         <input type="password" placeholder="비밀번호 입력" id="password" name="password" required oninput="checkPasswordMatch()">
-        <div id="passwordValidationMessage" class="message"></div>
+        <div id="passwordValidationMessage" class="message"></div> <!-- 비밀번호 유효성 검증 메시지 출력 div 추가 -->
 
         <label for="confirmPassword">비밀번호 확인</label>
         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="비밀번호 확인" required oninput="checkPasswordMatch()">
-        <div id="passwordMessage" class="message"></div>
+        <div id="passwordMessage" class="message"></div> <!-- 비밀번호 일치 메시지 출력 div 추가 -->
 
         <label for="phone">전화번호</label>
         <input type="tel" id="phone" name="phone" required placeholder="- 빼고 입력하세요">
@@ -57,7 +59,6 @@
 
         <button class="submit" type="submit">가입하기</button>
     </form>
-
 </body>
 
 </html>
